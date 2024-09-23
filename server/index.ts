@@ -16,12 +16,18 @@ const port = process.env.PORT || 8000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 // Middleware to parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', require('./routers/auth.controller'))
 app.use('/users', require('./routers/user.controller'))
+app.use('/category', require('./routers/category.controller'))
+app.use('/enterprise', require('./routers/enterprise.controller'))
+app.use('/post', require('./routers/posts.controller'))
+app.use('/form', require('./routers/form.controllere'))
+app.use('/reviews', require('./routers/review.controller'))
 
 app.listen(port, () => {
     console.log(`Server is running at Port:${port}`);

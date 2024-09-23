@@ -1,6 +1,5 @@
 import NavBar from "@/components/Home/NavBar";
 
-
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -13,10 +12,8 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <NavBar>
-
                     {children}
                 </NavBar>
-
             </body>
         </html>
     );

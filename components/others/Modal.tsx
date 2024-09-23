@@ -26,6 +26,10 @@ const ModalPrototype: React.FC<ProfileHeadProps> = ({ user }) => {
     const [files, setFiles] = useState<FileState>(null);
 
     const handleChange = (key: string, value: string) => {
+        if (key === 'name' && /\d/.test(value)) {
+            alert('Name should not contain numbers.');
+            return;
+        }
         setFormData(prevState => ({
             ...prevState,
             [key]: value,
@@ -124,13 +128,13 @@ const ModalPrototype: React.FC<ProfileHeadProps> = ({ user }) => {
                         <div className="flex justify-end">
 
                             <button
-                                className="mt-4 px-4 me-2 py-1 bg-orange-500 text-white rounded-md"
+                                className="mt-4 px-4 me-2 py-1 bg-blue-500 text-white rounded-md"
                                 onClick={handleSubmit}
                             >
                                 Save
                             </button>
                             <button
-                                className="mt-4 px-4 py-1 bg-orange-500 text-white rounded-md"
+                                className="mt-4 px-4 py-1 bg-blue-500 text-white rounded-md"
                                 onClick={e => dispatch(setModal({ id: 0, type: ' ', active: false }))}
                             >
                                 Close
